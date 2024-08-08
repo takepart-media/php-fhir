@@ -1,0 +1,19 @@
+{
+    "name": "takepartdev/laravel-fhir",
+    "description": "Laravel-FHIR package",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Takepartdev\\LaravelFhir\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kulcsar Kalman",
+            "email": "kalman.kulcsar@lynxsolutions.eu"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    }
+}
