@@ -38,7 +38,7 @@ class Hapi
 
     public function __construct()
     {
-        $this->hapiConnection = Http::baseUrl(config('fhir.hapi_url'))
+        $this->hapiConnection = Http::baseUrl(config('fhir.hapi_url', 'http://localhost'))
             ->withHeaders([
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
