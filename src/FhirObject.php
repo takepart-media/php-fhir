@@ -2,7 +2,6 @@
 
 namespace Takepartdev\LaravelFhir;
 
-use Fhir\AbstractResource;
 use Illuminate\Support\Str;
 use ReflectionException;
 use Takepartdev\LaravelFhir\DataTypes\PrependedPrimitive;
