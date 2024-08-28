@@ -37,7 +37,7 @@ class CoreService
     {
         $serviceClass = $this->getServiceClass($name);
         if (! $serviceClass) {
-            throw new HapiConnectionException('Undefined property: '.static::class.'::$'.$name);
+            throw new HapiConnectionException('Undefined property: ' . static::class . '::$' . $name);
         }
 
         $this->initializedServices[$name] = new $serviceClass;

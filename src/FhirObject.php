@@ -67,7 +67,7 @@ class FhirObject
         foreach ($data as $key => $value) {
 
             $prepended = false;
-            $setter = 'set'.Str::title($key);
+            $setter = 'set' . Str::title($key);
 
             if (Str::startsWith($key, '_')) {
                 $prepended = true;

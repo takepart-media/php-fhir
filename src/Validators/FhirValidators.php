@@ -15,7 +15,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -30,7 +30,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (in array) parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (in array) parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -47,7 +47,7 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (integer >) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (integer >) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             case '<':
@@ -55,7 +55,7 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (integer <) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (integer <) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             case '<=':
@@ -63,7 +63,7 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (integer <=) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (integer <=) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             case '>=':
@@ -71,14 +71,14 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (integer >=) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (integer >=) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             default:
                 if (config('fhir.ignore_validations')) {
                     return false;
                 }
-                throw new GenericFhirValidationException('Invalid operator supplied during (integer default) validation: '.$parameterName.' | '.$suspect);
+                throw new GenericFhirValidationException('Invalid operator supplied during (integer default) validation: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -95,7 +95,7 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (decimal >) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (decimal >) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             case '<':
@@ -103,7 +103,7 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (decimal <) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (decimal <) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             case '<=':
@@ -111,7 +111,7 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (decimal <=) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (decimal <=) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             case '>=':
@@ -119,14 +119,14 @@ trait FhirValidators
                     if (config('fhir.ignore_validations')) {
                         return false;
                     }
-                    throw new GenericFhirValidationException('Unable to validate (decimal >=) parameter: '.$parameterName.' | '.$suspect);
+                    throw new GenericFhirValidationException('Unable to validate (decimal >=) parameter: ' . $parameterName . ' | ' . $suspect);
                 }
                 break;
             default:
                 if (config('fhir.ignore_validations')) {
                     return false;
                 }
-                throw new GenericFhirValidationException('Invalid operator supplied during (decimal default) validation: '.$parameterName.' | '.$suspect);
+                throw new GenericFhirValidationException('Invalid operator supplied during (decimal default) validation: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -141,7 +141,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate base64 string: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate base64 string: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -159,7 +159,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) date time parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) date time parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -177,7 +177,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) time parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) time parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -195,7 +195,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) date parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) date parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -213,7 +213,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) code parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) code parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -231,7 +231,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) uri parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) uri parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -249,7 +249,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) url parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) url parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -267,7 +267,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) language parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) language parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -289,7 +289,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate (regex) markdown parameter: '.$parameterName.' | '.$suspect);
+            throw new GenericFhirValidationException('Unable to validate (regex) markdown parameter: ' . $parameterName . ' | ' . $suspect);
         }
 
         return true;
@@ -305,7 +305,7 @@ trait FhirValidators
                 if (config('fhir.ignore_validations')) {
                     return false;
                 }
-                throw new GenericFhirValidationException('Unable to validate "One of these" parameter: '.$parameterName.' | '.$oneOfWhich);
+                throw new GenericFhirValidationException('Unable to validate "One of these" parameter: ' . $parameterName . ' | ' . $oneOfWhich);
             }
         }
 
@@ -321,7 +321,7 @@ trait FhirValidators
             if (config('fhir.ignore_validations')) {
                 return false;
             }
-            throw new GenericFhirValidationException('Unable to validate "boolean" parameter: '.$parameterName.' | '.$boolean);
+            throw new GenericFhirValidationException('Unable to validate "boolean" parameter: ' . $parameterName . ' | ' . $boolean);
         }
 
         return true;

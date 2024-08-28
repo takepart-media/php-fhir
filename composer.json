@@ -2,11 +2,6 @@
     "name": "takepartdev/laravel-fhir",
     "description": "Laravel-FHIR package",
     "type": "library",
-    "autoload": {
-        "psr-4": {
-            "Takepartdev\\LaravelFhir\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Kulcsar Kalman",
@@ -15,5 +10,21 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "^7.2"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Takepartdev\\LaravelFhir\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Takepartdev\\LaravelFhir\\FhirProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
 }

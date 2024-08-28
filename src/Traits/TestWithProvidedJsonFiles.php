@@ -30,7 +30,7 @@ trait TestWithProvidedJsonFiles
                 return ! Str::startsWith($file, '.');
             })
             ->mapWithKeys(function ($file) use ($path) {
-                return [$file => [realpath($path.'/'.$file)]];
+                return [$file => [realpath($path . '/' . $file)]];
             });
     }
 }
