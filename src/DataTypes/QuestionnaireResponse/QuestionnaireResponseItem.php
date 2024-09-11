@@ -36,7 +36,7 @@ class QuestionnaireResponseItem extends InternalResource
         $this->values['text'] = $text;
     }
 
-    public function setAnswerOption(ItemAnswer $answer): void
+    public function setAnswer(ItemAnswer $answer): void
     {
         $this->initArrayProperty('answer');
         $this->values['answer'][] = $answer;

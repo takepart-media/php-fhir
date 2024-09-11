@@ -20,7 +20,10 @@ Follow these steps to add the package to your project:
 ```
 - run *composer update*
 - You will need a bitbucket key & secret in order to install the package. Ask for these from the developers.
-
+- Last but not least, register the *FhirProvider* class to the *providers* array in your *app.php* config file: 
+```php
+Takepartdev\LaravelFhir\FhirProvider::class
+```
 ### FHIR
 
 At the moment only the following main resources are implemented:
