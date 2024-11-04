@@ -36,13 +36,21 @@ class Hapi
 
     private ?CoreService $coreService = null;
 
-    public function __construct()
+    public function __construct(?string $baseUrl = null, array $options = [])
     {
-        $this->hapiConnection = Http::baseUrl(config('fhir.hapi_url', 'http://localhost'))
-            ->withHeaders([
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ]);
+        $this->hapiConnection = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ]);
+
+        if ($baseUrl) {
+            $this->hapiConnection->baseUrl($baseUrl);
+            if (count($options)) {
+                //TODO: implement options
+            }
+        } else {
+            $this->hapiConnection->baseUrl(config('fhir.hapi_url', 'http://localhost'));
+        }
     }
 
     /**
