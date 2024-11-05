@@ -36,21 +36,16 @@ class Hapi
 
     private ?CoreService $coreService = null;
 
-    public function __construct(?string $baseUrl = null, array $options = [])
-    {
-        $this->hapiConnection = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-        ]);
+    private string $baseUrl;
 
-        if ($baseUrl) {
-            $this->hapiConnection->baseUrl($baseUrl);
-            if (count($options)) {
-                //TODO: implement options
-            }
-        } else {
-            $this->hapiConnection->baseUrl(config('fhir.hapi_url', 'http://localhost'));
-        }
+    public function __construct(string $baseUrl, array $options = [])
+    {
+        $this->baseUrl = $baseUrl;
+        $this->hapiConnection = Http::baseUrl($this->baseUrl)
+            ->withHeaders([
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ]);
     }
 
     /**
@@ -59,7 +54,7 @@ class Hapi
     public function __get(string $name)
     {
         if ($this->coreService === null) {
-            $this->coreService = new CoreService;
+            $this->coreService = new CoreService($this->baseUrl);
         }
 
         return $this->coreService->__get($name);
