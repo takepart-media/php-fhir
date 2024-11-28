@@ -74,7 +74,7 @@ class FhirObject
                 $setter = 'setPrependedPrimitive';
             }
 
-            if (is_string($value) || is_bool($value) || is_int($value)) {
+            if (is_string($value) || is_bool($value) || is_int($value) || is_float($value)) {
                 $fhirResource->$setter($value);
 
                 continue;
