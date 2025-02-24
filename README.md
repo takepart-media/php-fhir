@@ -52,11 +52,17 @@ $patient->setName($name);
 
 The package also has a *HAPI* server connection built in. All the upper mentioned resources can be queried&sent to&from the configured HAPI server.
 
-Don't forget to add the *HAPI_URL* variable to your *.env* file. Other variables may come in the future.
+The *connectionUrl* (string) parameter is required. That will be the hapi url of your server. The second parameter, *options* (array), is optional, and supports two keys at the moment:
+*basic_auth_username* and *basic_auth_password*. If these are provided, the connection to the hapi server will be established using basic auth.
 
 Example: fetch a patient from hapi:
 ```php
-$hapi = new Hapi();
+$connectionUrl = "https://your-hapi-server.test/fhir"
+$options = [
+    'basic_auth_username' => 'foo',
+    'basic_auth_password' => 'bar'
+];
+$hapi = new Hapi($connectionUrl, $options);
 $patient = $hapi->patients->retrieve('123');
 ```
 Other implemented functions: all(), retrieve(), create(), update() and validate()
