@@ -10,9 +10,12 @@ class CoreService
 
     private string $baseUrl;
 
-    public function __construct(string $baseUrl)
+    private array $options;
+
+    public function __construct(string $baseUrl, array $options = [])
     {
         $this->baseUrl = $baseUrl;
+        $this->options = $options;
         $this->initializedServices = [];
     }
 
@@ -43,7 +46,7 @@ class CoreService
             throw new HapiConnectionException('Undefined property: ' . static::class . '::$' . $name);
         }
 
-        $this->initializedServices[$name] = new $serviceClass($this->baseUrl);
+        $this->initializedServices[$name] = new $serviceClass($this->baseUrl, $this->options);
 
         return $this->initializedServices[$name];
     }

@@ -38,14 +38,23 @@ class Hapi
 
     private string $baseUrl;
 
+    private array $options;
+
     public function __construct(string $baseUrl, array $options = [])
     {
         $this->baseUrl = $baseUrl;
-        $this->hapiConnection = Http::baseUrl($this->baseUrl)
-            ->withHeaders([
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ]);
+        $this->options = $options;
+
+        $this->hapiConnection = Http::baseUrl($this->baseUrl);
+
+        if (isset($options['basic_auth_username']) && isset($options['basic_auth_password'])) {
+            $this->hapiConnection->withBasicAuth($options['basic_auth_username'], $options['basic_auth_password']);
+        }
+
+        $this->hapiConnection->withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ]);
     }
 
     /**
@@ -54,7 +63,7 @@ class Hapi
     public function __get(string $name)
     {
         if ($this->coreService === null) {
-            $this->coreService = new CoreService($this->baseUrl);
+            $this->coreService = new CoreService($this->baseUrl, $this->options);
         }
 
         return $this->coreService->__get($name);
