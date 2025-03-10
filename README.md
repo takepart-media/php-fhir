@@ -65,6 +65,12 @@ $options = [
 $hapi = new Hapi($connectionUrl, $options);
 $patient = $hapi->patients->retrieve('123');
 ```
-Other implemented functions: all(), retrieve(), create(), update() and validate()
+Other implemented functions:
+- all()
+- retrieve()
+- create()
+- update()
+- destroy()
+- validate()
 
 Contact [this](mailto:jploens@takepart-media.de) or [that](mailto:kalman.kulcsar@lynxsolutions.eu) guy should you have any questions.

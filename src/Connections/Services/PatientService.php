@@ -57,4 +57,14 @@ class PatientService extends Hapi
 
         return $validationResponse;
     }
+
+    /**
+     * @throws HapiConnectionException
+     */
+    public function destroy(string $patientId)
+    {
+        $patientId = $this->stripCharacters($patientId);
+
+        return $this->delete("/Patient/$patientId");
+    }
 }

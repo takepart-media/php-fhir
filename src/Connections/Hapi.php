@@ -160,6 +160,23 @@ class Hapi
     }
 
     /**
+     * @throws HapiConnectionException
+     */
+    protected function delete(string $url)
+    {
+        try {
+            $response = $this->hapiConnection->delete($url);
+            if ($response->status() !== 200) {
+                throw new HapiConnectionException("Something went wrong while accessing hapi with url: (DELETE) $url. Message: {$response->body()}");
+            }
+
+            return $response->json();
+        } catch (\Exception $ex) {
+            throw new HapiConnectionException($ex->getMessage());
+        }
+    }
+
+    /**
      * @throws HapiValidationException
      */
     protected function buildSeveritiesArray(array $severities): array

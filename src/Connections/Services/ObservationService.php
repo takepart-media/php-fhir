@@ -47,6 +47,16 @@ class ObservationService extends Hapi
 
     /**
      * @throws HapiConnectionException
+     */
+    public function destroy(string $observationId)
+    {
+        $observationId = $this->stripCharacters($observationId);
+
+        return $this->delete("/Observation/$observationId");
+    }
+
+    /**
+     * @throws HapiConnectionException
      * @throws HapiValidationException
      */
     public function validate(ObservationResource $observation, array $severities = [])

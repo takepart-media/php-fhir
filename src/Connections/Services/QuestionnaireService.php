@@ -47,6 +47,16 @@ class QuestionnaireService extends Hapi
 
     /**
      * @throws HapiConnectionException
+     */
+    public function destroy(string $questionnaireId)
+    {
+        $questionnaireId = $this->stripCharacters($questionnaireId);
+
+        return $this->delete("/Questionnaire/$questionnaireId");
+    }
+
+    /**
+     * @throws HapiConnectionException
      * @throws HapiValidationException
      */
     public function validate(QuestionnaireResource $questionnaire, array $severities = [])

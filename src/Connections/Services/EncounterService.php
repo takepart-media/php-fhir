@@ -47,6 +47,16 @@ class EncounterService extends Hapi
 
     /**
      * @throws HapiConnectionException
+     */
+    public function destroy(string $encounterId)
+    {
+        $encounterId = $this->stripCharacters($encounterId);
+
+        return $this->delete("/Encounter/$encounterId");
+    }
+
+    /**
+     * @throws HapiConnectionException
      * @throws HapiValidationException
      */
     public function validate(EncounterResource $encounter, array $severities = [])

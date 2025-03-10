@@ -47,6 +47,16 @@ class PractitionerService extends Hapi
 
     /**
      * @throws HapiConnectionException
+     */
+    public function destroy(string $practitionerId)
+    {
+        $practitionerId = $this->stripCharacters($practitionerId);
+
+        return $this->delete("/Practitioner/$practitionerId");
+    }
+
+    /**
+     * @throws HapiConnectionException
      * @throws HapiValidationException
      */
     public function validate(PractitionerResource $practitioner, array $severities = [])

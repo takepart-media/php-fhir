@@ -47,6 +47,16 @@ class OrganizationService extends Hapi
 
     /**
      * @throws HapiConnectionException
+     */
+    public function destroy(string $organizationId)
+    {
+        $organizationId = $this->stripCharacters($organizationId);
+
+        return $this->delete("/Organization/$organizationId");
+    }
+
+    /**
+     * @throws HapiConnectionException
      * @throws HapiValidationException
      */
     public function validate(OrganizationResource $organization, array $severities = [])

@@ -48,6 +48,16 @@ class BundleService extends Hapi
 
     /**
      * @throws HapiConnectionException
+     */
+    public function destroy(string $bundleId)
+    {
+        $bundleId = $this->stripCharacters($bundleId);
+
+        return $this->delete("/Bundle/$bundleId");
+    }
+
+    /**
+     * @throws HapiConnectionException
      * @throws HapiValidationException
      */
     public function validate(BundleResource $bundle, array $severities = [])
