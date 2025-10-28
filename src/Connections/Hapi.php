@@ -47,6 +47,10 @@ class Hapi
 
         $this->hapiConnection = Http::baseUrl($this->baseUrl);
 
+        if (!request()->isSecure()) {
+            $this->hapiConnection->withOptions(["verify"=>false]);
+        }
+
         if (isset($options['basic_auth_username']) && isset($options['basic_auth_password'])) {
             $this->hapiConnection->withBasicAuth($options['basic_auth_username'], $options['basic_auth_password']);
         }
