@@ -15,6 +15,7 @@ use Takepartdev\LaravelFhir\Resources\PractitionerResource;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResource;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResponseResource;
 use Takepartdev\LaravelFhir\Resources\ResearchStudy;
+use Takepartdev\LaravelFhir\Resources\ResearchSubject;
 use Takepartdev\LaravelFhir\Resources\ServiceRequestResource;
 
 class FhirObject
@@ -32,6 +33,7 @@ class FhirObject
         'ServiceRequest' => ServiceRequestResource::class,
         'Observation' => ObservationResource::class,
         'ResearchStudy' => ResearchStudy::class,
+        'ResearchSubject' => ResearchSubject::class,
     ];
 
     /**
