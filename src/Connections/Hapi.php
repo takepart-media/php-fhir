@@ -13,6 +13,7 @@ use Takepartdev\LaravelFhir\Connections\Services\PatientService;
 use Takepartdev\LaravelFhir\Connections\Services\PractitionerService;
 use Takepartdev\LaravelFhir\Connections\Services\QuestionnaireResponseService;
 use Takepartdev\LaravelFhir\Connections\Services\QuestionnaireService;
+use Takepartdev\LaravelFhir\Connections\Services\ResearchStudyService;
 use Takepartdev\LaravelFhir\Connections\Services\ServerActionService;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
@@ -29,6 +30,7 @@ use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
  * @property QuestionnaireService $questionnaires
  * @property QuestionnaireResponseService $questionnaireResponses
  * @property ServerActionService $serverAction
+ * @property ResearchStudyService $researchStudies
  */
 class Hapi
 {
