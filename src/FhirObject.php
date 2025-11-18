@@ -14,11 +14,12 @@ use Takepartdev\LaravelFhir\Resources\PatientResource;
 use Takepartdev\LaravelFhir\Resources\PractitionerResource;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResource;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResponseResource;
+use Takepartdev\LaravelFhir\Resources\ResearchStudy;
 use Takepartdev\LaravelFhir\Resources\ServiceRequestResource;
 
 class FhirObject
 {
-    public AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource $returnValue;
+    public AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudy $returnValue;
 
     public const array MAIN_RESOURCES = [
         'Patient' => PatientResource::class,
@@ -30,6 +31,7 @@ class FhirObject
         'QuestionnaireResponse' => QuestionnaireResponseResource::class,
         'ServiceRequest' => ServiceRequestResource::class,
         'Observation' => ObservationResource::class,
+        'ResearchStudy' => ResearchStudy::class,
     ];
 
     /**
@@ -40,7 +42,7 @@ class FhirObject
         $this->returnValue = $this->build($data['resourceType'], $data);
     }
 
-    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource
+    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudy
     {
         return $this->returnValue;
     }
@@ -76,6 +78,14 @@ class FhirObject
 
             if (is_string($value) || is_bool($value) || is_int($value) || is_float($value)) {
                 $fhirResource->$setter($value);
+
+                continue;
+            }
+
+            if ($key === 'contained') {
+                foreach ($value as $item) {
+                    $fhirResource->setContained($item);
+                }
 
                 continue;
             }
