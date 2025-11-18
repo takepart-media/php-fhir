@@ -14,7 +14,7 @@ use Takepartdev\LaravelFhir\DataTypes\ResearchSubject\SubjectMilestone;
 use Takepartdev\LaravelFhir\DataTypes\ResearchSubject\SubjectState;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 
-class ResearchSubject extends AbstractResource
+class ResearchSubjectResource extends AbstractResource
 {
     protected string $name = 'ResearchSubject';
 

@@ -21,7 +21,7 @@ use Takepartdev\LaravelFhir\DataTypes\ResearchStudy\Recruitment;
 use Takepartdev\LaravelFhir\DataTypes\ResearchStudy\RelatesTo;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 
-class ResearchStudy extends AbstractResource
+class ResearchStudyResource extends AbstractResource
 {
     protected string $name = 'ResearchStudy';
 

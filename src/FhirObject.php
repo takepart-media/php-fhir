@@ -14,13 +14,13 @@ use Takepartdev\LaravelFhir\Resources\PatientResource;
 use Takepartdev\LaravelFhir\Resources\PractitionerResource;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResource;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResponseResource;
-use Takepartdev\LaravelFhir\Resources\ResearchStudy;
-use Takepartdev\LaravelFhir\Resources\ResearchSubject;
+use Takepartdev\LaravelFhir\Resources\ResearchStudyResource;
+use Takepartdev\LaravelFhir\Resources\ResearchSubjectResource;
 use Takepartdev\LaravelFhir\Resources\ServiceRequestResource;
 
 class FhirObject
 {
-    public AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudy $returnValue;
+    public AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudyResource $returnValue;
 
     public const array MAIN_RESOURCES = [
         'Patient' => PatientResource::class,
@@ -32,8 +32,8 @@ class FhirObject
         'QuestionnaireResponse' => QuestionnaireResponseResource::class,
         'ServiceRequest' => ServiceRequestResource::class,
         'Observation' => ObservationResource::class,
-        'ResearchStudy' => ResearchStudy::class,
-        'ResearchSubject' => ResearchSubject::class,
+        'ResearchStudy' => ResearchStudyResource::class,
+        'ResearchSubject' => ResearchSubjectResource::class,
     ];
 
     /**
@@ -44,7 +44,7 @@ class FhirObject
         $this->returnValue = $this->build($data['resourceType'], $data);
     }
 
-    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudy
+    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudyResource
     {
         return $this->returnValue;
     }
