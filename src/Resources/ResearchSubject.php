@@ -3,7 +3,6 @@
 namespace Takepartdev\LaravelFhir\Resources;
 
 use Takepartdev\LaravelFhir\AbstractResource;
-use Takepartdev\LaravelFhir\DataTypes\CodeableConcept;
 use Takepartdev\LaravelFhir\DataTypes\CodeableReference;
 use Takepartdev\LaravelFhir\DataTypes\Extension;
 use Takepartdev\LaravelFhir\DataTypes\Identifier;
