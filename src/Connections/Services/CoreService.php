@@ -30,6 +30,7 @@ class CoreService
         'questionnaires' => QuestionnaireService::class,
         'questionnaireResponses' => QuestionnaireResponseService::class,
         'researchStudies' => ResearchStudyService::class,
+        'researchSubjects' => ResearchSubjectService::class,
     ];
 
     private function getServiceClass($name)

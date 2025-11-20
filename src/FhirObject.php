@@ -20,7 +20,18 @@ use Takepartdev\LaravelFhir\Resources\ServiceRequestResource;
 
 class FhirObject
 {
-    public AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudyResource $returnValue;
+    public AbstractResource|
+        PatientResource|
+        BundleResource|
+        OrganizationResource|
+        EncounterResource|
+        PractitionerResource|
+        QuestionnaireResource|
+        QuestionnaireResponseResource|
+        ServiceRequestResource|
+        ObservationResource|
+        ResearchStudyResource|
+        ResearchSubjectResource $returnValue;
 
     public const array MAIN_RESOURCES = [
         'Patient' => PatientResource::class,
