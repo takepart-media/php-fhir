@@ -127,6 +127,11 @@ class ResearchSubjectResource extends AbstractResource
         $this->values['subject'] = $subject;
     }
 
+    public function setSubjectV4(Reference $subject): void
+    {
+        $this->values['individual'] = $subject;
+    }
+
     public function setSubjectState(SubjectState $subjectState): void
     {
         $this->initArrayProperty('subjectState');
