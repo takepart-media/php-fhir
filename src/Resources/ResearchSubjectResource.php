@@ -26,11 +26,17 @@ class ResearchSubjectResource extends AbstractResource
 
     public const string STATUS_UNKNOWN = 'unknown';
 
+    public const string STATUS_ACTIVE_V4 = 'screening';
+
+    public const string STATUS_RETIRED_V4 = 'withdrawn';
+
     public const array STATUS_CODES = [
         self::STATUS_DRAFT,
         self::STATUS_ACTIVE,
         self::STATUS_RETIRED,
         self::STATUS_UNKNOWN,
+        self::STATUS_ACTIVE_V4,
+        self::STATUS_RETIRED_V4,
     ];
 
     public function __construct()
