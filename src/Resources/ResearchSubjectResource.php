@@ -26,7 +26,7 @@ class ResearchSubjectResource extends AbstractResource
 
     public const string STATUS_UNKNOWN = 'unknown';
 
-    public const string STATUS_ACTIVE_V4 = 'screening';
+    public const string STATUS_ACTIVE_V4 = 'eligible';
 
     public const string STATUS_RETIRED_V4 = 'withdrawn';
 
