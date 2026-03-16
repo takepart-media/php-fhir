@@ -55,7 +55,7 @@ class FhirObject
         $this->returnValue = $this->build($data['resourceType'], $data);
     }
 
-    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudyResource
+    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudyResource|ResearchSubjectResource
     {
         return $this->returnValue;
     }
