@@ -8,6 +8,7 @@ use Takepartdev\LaravelFhir\DataTypes\PrependedPrimitive;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 use Takepartdev\LaravelFhir\Resources\BundleResource;
 use Takepartdev\LaravelFhir\Resources\EncounterResource;
+use Takepartdev\LaravelFhir\Resources\MedicationResource;
 use Takepartdev\LaravelFhir\Resources\ObservationResource;
 use Takepartdev\LaravelFhir\Resources\OrganizationResource;
 use Takepartdev\LaravelFhir\Resources\PatientResource;
@@ -45,6 +46,7 @@ class FhirObject
         'Observation' => ObservationResource::class,
         'ResearchStudy' => ResearchStudyResource::class,
         'ResearchSubject' => ResearchSubjectResource::class,
+        'Medication' => MedicationResource::class,
     ];
 
     /**
