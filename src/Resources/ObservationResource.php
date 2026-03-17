@@ -457,7 +457,7 @@ class ObservationResource extends AbstractResource
         $this->values['derivedFrom'][] = $derivedFrom;
     }
 
-    public function serComponent(Component $component): void
+    public function setComponent(Component $component): void
     {
         $this->initArrayProperty('component');
         $this->values['component'][] = $component;
