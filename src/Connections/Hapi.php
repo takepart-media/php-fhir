@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Http;
 use Takepartdev\LaravelFhir\Connections\Services\BundleService;
 use Takepartdev\LaravelFhir\Connections\Services\CoreService;
 use Takepartdev\LaravelFhir\Connections\Services\EncounterService;
+use Takepartdev\LaravelFhir\Connections\Services\ListService;
+use Takepartdev\LaravelFhir\Connections\Services\MedicationService;
+use Takepartdev\LaravelFhir\Connections\Services\MedicationStatementService;
 use Takepartdev\LaravelFhir\Connections\Services\ObservationService;
 use Takepartdev\LaravelFhir\Connections\Services\OrganizationService;
 use Takepartdev\LaravelFhir\Connections\Services\PatientService;
 use Takepartdev\LaravelFhir\Connections\Services\PractitionerService;
 use Takepartdev\LaravelFhir\Connections\Services\QuestionnaireResponseService;
 use Takepartdev\LaravelFhir\Connections\Services\QuestionnaireService;
-use Takepartdev\LaravelFhir\Connections\Services\MedicationService;
 use Takepartdev\LaravelFhir\Connections\Services\ResearchStudyService;
 use Takepartdev\LaravelFhir\Connections\Services\ResearchSubjectService;
 use Takepartdev\LaravelFhir\Connections\Services\ServerActionService;
@@ -35,6 +37,8 @@ use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
  * @property ResearchStudyService $researchStudies
  * @property ResearchSubjectService $researchSubjects
  * @property MedicationService $medications
+ * @property MedicationStatementService $medicationStatements
+ * @property ListService $lists
  */
 class Hapi
 {

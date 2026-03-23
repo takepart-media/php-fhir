@@ -8,7 +8,9 @@ use Takepartdev\LaravelFhir\DataTypes\PrependedPrimitive;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 use Takepartdev\LaravelFhir\Resources\BundleResource;
 use Takepartdev\LaravelFhir\Resources\EncounterResource;
+use Takepartdev\LaravelFhir\Resources\ListResource;
 use Takepartdev\LaravelFhir\Resources\MedicationResource;
+use Takepartdev\LaravelFhir\Resources\MedicationStatementResource;
 use Takepartdev\LaravelFhir\Resources\ObservationResource;
 use Takepartdev\LaravelFhir\Resources\OrganizationResource;
 use Takepartdev\LaravelFhir\Resources\PatientResource;
@@ -21,18 +23,7 @@ use Takepartdev\LaravelFhir\Resources\ServiceRequestResource;
 
 class FhirObject
 {
-    public AbstractResource|
-        PatientResource|
-        BundleResource|
-        OrganizationResource|
-        EncounterResource|
-        PractitionerResource|
-        QuestionnaireResource|
-        QuestionnaireResponseResource|
-        ServiceRequestResource|
-        ObservationResource|
-        ResearchStudyResource|
-        ResearchSubjectResource $returnValue;
+    public AbstractResource $returnValue;
 
     public const array MAIN_RESOURCES = [
         'Patient' => PatientResource::class,
@@ -47,6 +38,8 @@ class FhirObject
         'ResearchStudy' => ResearchStudyResource::class,
         'ResearchSubject' => ResearchSubjectResource::class,
         'Medication' => MedicationResource::class,
+        'MedicationStatement' => MedicationStatementResource::class,
+        'List' => ListResource::class,
     ];
 
     /**
@@ -57,7 +50,7 @@ class FhirObject
         $this->returnValue = $this->build($data['resourceType'], $data);
     }
 
-    public function toFhir(): AbstractResource|PatientResource|BundleResource|OrganizationResource|EncounterResource|PractitionerResource|QuestionnaireResource|QuestionnaireResponseResource|ServiceRequestResource|ObservationResource|ResearchStudyResource|ResearchSubjectResource
+    public function toFhir(): AbstractResource
     {
         return $this->returnValue;
     }

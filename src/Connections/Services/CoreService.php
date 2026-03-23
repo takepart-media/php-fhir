@@ -32,6 +32,8 @@ class CoreService
         'researchStudies' => ResearchStudyService::class,
         'researchSubjects' => ResearchSubjectService::class,
         'medications' => MedicationService::class,
+        'medicationStatements' => MedicationStatementService::class,
+        'lists' => ListService::class,
     ];
 
     private function getServiceClass($name)
