@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\EncounterResource;
 
-class EncounterService extends Hapi
+class EncounterService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/Encounter', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $encounterId)
-    {
-        $encounterId = $this->stripCharacters($encounterId);
-
-        return $this->get("/Encounter/$encounterId");
-    }
+    protected function resourceName(): string { return 'Encounter'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class EncounterService extends Hapi
         $encounterId = $this->stripCharacters($encounterId);
 
         return $this->put("/Encounter/$encounterId", $encounter->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $encounterId)
-    {
-        $encounterId = $this->stripCharacters($encounterId);
-
-        return $this->delete("/Encounter/$encounterId");
     }
 
     /**

@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\OrganizationResource;
 
-class OrganizationService extends Hapi
+class OrganizationService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/Organization', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $organizationId)
-    {
-        $organizationId = $this->stripCharacters($organizationId);
-
-        return $this->get("/Organization/$organizationId");
-    }
+    protected function resourceName(): string { return 'Organization'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class OrganizationService extends Hapi
         $organizationId = $this->stripCharacters($organizationId);
 
         return $this->put("/Organization/$organizationId", $organization->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $organizationId)
-    {
-        $organizationId = $this->stripCharacters($organizationId);
-
-        return $this->delete("/Organization/$organizationId");
     }
 
     /**

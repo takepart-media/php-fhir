@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\PractitionerResource;
 
-class PractitionerService extends Hapi
+class PractitionerService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/Practitioner', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $practitionerId)
-    {
-        $practitionerId = $this->stripCharacters($practitionerId);
-
-        return $this->get("/Practitioner/$practitionerId");
-    }
+    protected function resourceName(): string { return 'Practitioner'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class PractitionerService extends Hapi
         $practitionerId = $this->stripCharacters($practitionerId);
 
         return $this->put("/Practitioner/$practitionerId", $practitioner->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $practitionerId)
-    {
-        $practitionerId = $this->stripCharacters($practitionerId);
-
-        return $this->delete("/Practitioner/$practitionerId");
     }
 
     /**

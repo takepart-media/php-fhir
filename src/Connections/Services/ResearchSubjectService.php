@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\ResearchSubjectResource;
 
-class ResearchSubjectService extends Hapi
+class ResearchSubjectService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/ResearchSubject', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $researchSubjectId)
-    {
-        $researchSubjectId = $this->stripCharacters($researchSubjectId);
-
-        return $this->get("/ResearchSubject/$researchSubjectId");
-    }
+    protected function resourceName(): string { return 'ResearchSubject'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class ResearchSubjectService extends Hapi
         $researchSubjectId = $this->stripCharacters($researchSubjectId);
 
         return $this->put("/ResearchSubject/$researchSubjectId", $researchSubject->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $researchSubjectId)
-    {
-        $researchSubjectId = $this->stripCharacters($researchSubjectId);
-
-        return $this->delete("/ResearchSubject/$researchSubjectId");
     }
 
     /**

@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\MedicationStatementResource;
 
-class MedicationStatementService extends Hapi
+class MedicationStatementService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/MedicationStatement', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $medicationStatementId)
-    {
-        $medicationStatementId = $this->stripCharacters($medicationStatementId);
-
-        return $this->get("/MedicationStatement/$medicationStatementId");
-    }
+    protected function resourceName(): string { return 'MedicationStatement'; }
 
     /**
      * @throws HapiConnectionException
@@ -56,15 +39,5 @@ class MedicationStatementService extends Hapi
         $this->checkValidationSeverity($validationResponse, $severities);
 
         return $validationResponse;
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $medicationStatementId)
-    {
-        $medicationStatementId = $this->stripCharacters($medicationStatementId);
-
-        return $this->delete("/MedicationStatement/$medicationStatementId");
     }
 }

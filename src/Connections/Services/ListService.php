@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\ListResource;
 
-class ListService extends Hapi
+class ListService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/List', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $listId)
-    {
-        $listId = $this->stripCharacters($listId);
-
-        return $this->get("/List/$listId");
-    }
+    protected function resourceName(): string { return 'List'; }
 
     /**
      * @throws HapiConnectionException
@@ -56,15 +39,5 @@ class ListService extends Hapi
         $this->checkValidationSeverity($validationResponse, $severities);
 
         return $validationResponse;
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $listId)
-    {
-        $listId = $this->stripCharacters($listId);
-
-        return $this->delete("/List/$listId");
     }
 }

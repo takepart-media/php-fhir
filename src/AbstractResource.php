@@ -9,6 +9,8 @@ use Takepartdev\LaravelFhir\Validators\FhirValidators;
 abstract class AbstractResource
 {
     use FhirValidators;
+    private static array $getterTypeCache = [];
+
 
     /**
      * Holds the data as a key => value array
@@ -68,19 +70,23 @@ abstract class AbstractResource
         }
 
         $setterMethodName = "set{$name}";
-        $reflectionClass = new ReflectionClass($this);
-        if ($reflectionClass->hasMethod($setterMethodName)) {
-            $reflectionNamedType = $reflectionClass->getMethod($setterMethodName)->getParameters()[0]->getType();
-            /* @var $reflectionNamedType ReflectionNamedType */
-            if ($reflectionNamedType !== null) {
-                $parameterClassName = $reflectionNamedType->getName();
-
-                if (class_exists($parameterClassName)) {
-                    $this->$setterMethodName(new $parameterClassName);
-
-                    return $this->values[$name];
-                }
+        $cacheKey = static::class . '::' . $setterMethodName;
+        if (! array_key_exists($cacheKey, self::$getterTypeCache)) {
+            $reflectionClass = new ReflectionClass($this);
+            if ($reflectionClass->hasMethod($setterMethodName)) {
+                $params = $reflectionClass->getMethod($setterMethodName)->getParameters();
+                $type = isset($params[0]) ? $params[0]->getType() : null;
+                self::$getterTypeCache[$cacheKey] = $type?->getName();
+            } else {
+                self::$getterTypeCache[$cacheKey] = null;
             }
+        }
+
+        $parameterClassName = self::$getterTypeCache[$cacheKey];
+        if ($parameterClassName !== null && class_exists($parameterClassName)) {
+            $this->$setterMethodName(new $parameterClassName);
+
+            return $this->values[$name];
         }
 
         return $nullValue;
@@ -135,6 +141,11 @@ abstract class AbstractResource
         ) {
             $this->values[$propertyName] = [];
         }
+    }
+
+    public function getInvalidData(): array
+    {
+        return $this->values['hiddenProperties'] ?? [];
     }
 
     public function toJson(): false|string

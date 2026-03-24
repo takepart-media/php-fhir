@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\ResearchStudyResource;
 
-class ResearchStudyService extends Hapi
+class ResearchStudyService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/ResearchStudy', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $researchStudyId)
-    {
-        $researchStudyId = $this->stripCharacters($researchStudyId);
-
-        return $this->get("/ResearchStudy/$researchStudyId");
-    }
+    protected function resourceName(): string { return 'ResearchStudy'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class ResearchStudyService extends Hapi
         $researchStudyId = $this->stripCharacters($researchStudyId);
 
         return $this->put("/ResearchStudy/$researchStudyId", $researchStudy->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $researchStudyId)
-    {
-        $researchStudyId = $this->stripCharacters($researchStudyId);
-
-        return $this->delete("/ResearchStudy/$researchStudyId");
     }
 
     /**

@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResponseResource;
 
-class QuestionnaireResponseService extends Hapi
+class QuestionnaireResponseService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/QuestionnaireResponse', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $questionnaireResponseId)
-    {
-        $questionnaireResponseId = $this->stripCharacters($questionnaireResponseId);
-
-        return $this->get("/QuestionnaireResponse/$questionnaireResponseId");
-    }
+    protected function resourceName(): string { return 'QuestionnaireResponse'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class QuestionnaireResponseService extends Hapi
         $questionnaireResponseId = $this->stripCharacters($questionnaireResponseId);
 
         return $this->put("/QuestionnaireResponse/$questionnaireResponseId", $questionnaireResponse->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $questionnaireResponseId)
-    {
-        $questionnaireResponseId = $this->stripCharacters($questionnaireResponseId);
-
-        return $this->delete("/QuestionnaireResponse/$questionnaireResponseId");
     }
 
     /**

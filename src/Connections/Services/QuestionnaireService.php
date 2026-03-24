@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\QuestionnaireResource;
 
-class QuestionnaireService extends Hapi
+class QuestionnaireService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/Questionnaire', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $questionnaireId)
-    {
-        $questionnaireId = $this->stripCharacters($questionnaireId);
-
-        return $this->get("/Questionnaire/$questionnaireId");
-    }
+    protected function resourceName(): string { return 'Questionnaire'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class QuestionnaireService extends Hapi
         $questionnaireId = $this->stripCharacters($questionnaireId);
 
         return $this->put("/Questionnaire/$questionnaireId", $questionnaire->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $questionnaireId)
-    {
-        $questionnaireId = $this->stripCharacters($questionnaireId);
-
-        return $this->delete("/Questionnaire/$questionnaireId");
     }
 
     /**

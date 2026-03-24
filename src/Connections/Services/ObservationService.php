@@ -2,30 +2,13 @@
 
 namespace Takepartdev\LaravelFhir\Connections\Services;
 
-use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 use Takepartdev\LaravelFhir\Resources\ObservationResource;
 
-class ObservationService extends Hapi
+class ObservationService extends ResourceService
 {
-    /**
-     * @throws HapiConnectionException
-     */
-    public function all(?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
-    {
-        return $this->get('/Observation', $orderByField, $orderByDirection, $options);
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function retrieve(string $observationId)
-    {
-        $observationId = $this->stripCharacters($observationId);
-
-        return $this->get("/Observation/$observationId");
-    }
+    protected function resourceName(): string { return 'Observation'; }
 
     /**
      * @throws HapiConnectionException
@@ -43,16 +26,6 @@ class ObservationService extends Hapi
         $observationId = $this->stripCharacters($observationId);
 
         return $this->put("/Observation/$observationId", $observation->toArray());
-    }
-
-    /**
-     * @throws HapiConnectionException
-     */
-    public function destroy(string $observationId)
-    {
-        $observationId = $this->stripCharacters($observationId);
-
-        return $this->delete("/Observation/$observationId");
     }
 
     /**

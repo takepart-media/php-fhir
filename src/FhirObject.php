@@ -55,6 +55,24 @@ class FhirObject
         return $this->returnValue;
     }
 
+    private static array $setterTypeCache = [];
+
+    private function getSetterParamType(string $class, string $setter): ?string
+    {
+        $cacheKey = $class . '::' . $setter;
+        if (! array_key_exists($cacheKey, self::$setterTypeCache)) {
+            $ref = new \ReflectionClass($class);
+            if (! $ref->hasMethod($setter)) {
+                self::$setterTypeCache[$cacheKey] = null;
+            } else {
+                $params = $ref->getMethod($setter)->getParameters();
+                self::$setterTypeCache[$cacheKey] = isset($params[0]) ? $params[0]->getType()?->getName() : null;
+            }
+        }
+
+        return self::$setterTypeCache[$cacheKey];
+    }
+
     /**
      * @throws GenericFhirValidationException
      * @throws ReflectionException
@@ -71,8 +89,6 @@ class FhirObject
         } else {
             $fhirResource = new $resourceType;
         }
-
-        $reflectionClass = new \ReflectionClass($fhirResource::class);
 
         foreach ($data as $key => $value) {
 
@@ -98,9 +114,6 @@ class FhirObject
                 continue;
             }
 
-            $method = $reflectionClass->getMethod($setter);
-            $parameter = $method->getParameters()[0];
-
             if (isset($value[0])) {
                 foreach ($value as $subValue) {
                     if (is_string($subValue)) {
@@ -110,22 +123,26 @@ class FhirObject
                     }
 
                     if ($prepended) {
-                        $fhirParamType = PrependedPrimitive::class;
-                        $meta = $this->build($fhirParamType, $subValue);
+                        $meta = $this->build(PrependedPrimitive::class, $subValue);
                         $fhirResource->setPrependedPrimitive($key, $meta, true);
                     } else {
-                        $fhirParamType = $parameter->getType()->getName();
+                        $fhirParamType = $this->getSetterParamType($fhirResource::class, $setter);
+                        if ($fhirParamType === null) {
+                            continue;
+                        }
                         $meta = $this->build($fhirParamType, $subValue);
                         $fhirResource->$setter($meta);
                     }
                 }
             } else {
                 if ($prepended) {
-                    $fhirParamType = PrependedPrimitive::class;
-                    $meta = $this->build($fhirParamType, $value);
+                    $meta = $this->build(PrependedPrimitive::class, $value);
                     $fhirResource->setPrependedPrimitive($key, $meta);
                 } else {
-                    $fhirParamType = $parameter->getType()->getName();
+                    $fhirParamType = $this->getSetterParamType($fhirResource::class, $setter);
+                    if ($fhirParamType === null) {
+                        continue;
+                    }
                     $meta = $this->build($fhirParamType, $value);
                     $fhirResource->$setter($meta);
                 }
