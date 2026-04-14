@@ -48,6 +48,12 @@ class Coding extends AbstractResource
         $this->values['display'] = $display;
     }
 
+    public function setExtension(Extension $extension): void
+    {
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $extension;
+    }
+
     /**
      * @throws GenericFhirValidationException
      */

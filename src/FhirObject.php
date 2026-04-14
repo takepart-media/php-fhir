@@ -7,6 +7,7 @@ use ReflectionException;
 use Takepartdev\LaravelFhir\DataTypes\PrependedPrimitive;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 use Takepartdev\LaravelFhir\Resources\BundleResource;
+use Takepartdev\LaravelFhir\Resources\ConditionResource;
 use Takepartdev\LaravelFhir\Resources\EncounterResource;
 use Takepartdev\LaravelFhir\Resources\ListResource;
 use Takepartdev\LaravelFhir\Resources\MedicationResource;
@@ -28,6 +29,7 @@ class FhirObject
     public const array MAIN_RESOURCES = [
         'Patient' => PatientResource::class,
         'Bundle' => BundleResource::class,
+        'Condition' => ConditionResource::class,
         'Organization' => OrganizationResource::class,
         'Encounter' => EncounterResource::class,
         'Practitioner' => PractitionerResource::class,
