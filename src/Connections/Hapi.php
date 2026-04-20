@@ -5,6 +5,7 @@ namespace Takepartdev\LaravelFhir\Connections;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Takepartdev\LaravelFhir\Connections\Services\BundleService;
+use Takepartdev\LaravelFhir\Connections\Services\ConditionService;
 use Takepartdev\LaravelFhir\Connections\Services\CoreService;
 use Takepartdev\LaravelFhir\Connections\Services\EncounterService;
 use Takepartdev\LaravelFhir\Connections\Services\ListService;
@@ -27,6 +28,7 @@ use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
  *
  * @property PatientService $patients
  * @property BundleService $bundles
+ * @property ConditionService $conditions
  * @property EncounterService $encounters
  * @property ObservationService $observations
  * @property OrganizationService $organizations

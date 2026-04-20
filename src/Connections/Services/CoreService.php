@@ -22,6 +22,7 @@ class CoreService
     private static array $classMap = [
         'serverAction' => ServerActionService::class,
         'bundles' => BundleService::class,
+        'conditions' => ConditionService::class,
         'encounters' => EncounterService::class,
         'observations' => ObservationService::class,
         'organizations' => OrganizationService::class,
