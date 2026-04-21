@@ -6,8 +6,14 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Takepartdev\LaravelFhir\Connections\Services\Snomed\CoreService;
+use Takepartdev\LaravelFhir\Connections\Services\Snomed\ValueSetService;
 use Takepartdev\LaravelFhir\Exceptions\SnomedConnectionException;
 
+/**
+ * Client used to send requests to the hapi server
+ *
+ * @property ValueSetService $valueSet
+ */
 class Snomed
 {
     private ?CoreService $coreService = null;
