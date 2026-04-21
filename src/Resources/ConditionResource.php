@@ -5,12 +5,12 @@ namespace Takepartdev\LaravelFhir\Resources;
 use Takepartdev\LaravelFhir\AbstractResource;
 use Takepartdev\LaravelFhir\DataTypes\Annotation;
 use Takepartdev\LaravelFhir\DataTypes\CodeableConcept;
-use Takepartdev\LaravelFhir\DataTypes\Condition\ConditionAbatement;
 use Takepartdev\LaravelFhir\DataTypes\Condition\ConditionEvidence;
-use Takepartdev\LaravelFhir\DataTypes\Condition\ConditionOnset;
 use Takepartdev\LaravelFhir\DataTypes\Condition\ConditionStage;
 use Takepartdev\LaravelFhir\DataTypes\Identifier;
 use Takepartdev\LaravelFhir\DataTypes\Meta;
+use Takepartdev\LaravelFhir\DataTypes\Period;
+use Takepartdev\LaravelFhir\DataTypes\Range;
 use Takepartdev\LaravelFhir\DataTypes\Reference;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 
@@ -77,14 +77,48 @@ class ConditionResource extends AbstractResource
         $this->values['encounter'] = $encounter;
     }
 
-    public function setOnset(ConditionOnset $onset): void
+    public function setOnsetPeriod(Period $onsetPeriod): void
     {
-        $this->values['onset'] = $onset;
+        $this->values['onsetPeriod'] = $onsetPeriod;
     }
 
-    public function setAbatement(ConditionAbatement $abatement): void
+    /**
+     * @throws GenericFhirValidationException
+     */
+    public function setOnsetDateTime(string $dateTimeString): void
     {
-        $this->values['abatement'] = $abatement;
+        if ($this->validateDateTime($dateTimeString, 'Condition.onsetDateTime')) {
+            $this->values['onsetDateTime'] = $dateTimeString;
+        } else {
+            $this->values['hiddenProperties']['onsetDateTime'] = $dateTimeString;
+        }
+    }
+
+    /**
+     * @throws GenericFhirValidationException
+     */
+    public function setAbatementDateTime(string $dateTimeString): void
+    {
+        if ($this->validateDateTime($dateTimeString, 'ConditionAbatement.abatementDateTime')) {
+            $this->values['abatementDateTime'] = $dateTimeString;
+        } else {
+            $this->values['hiddenProperties']['abatementDateTime'] = $dateTimeString;
+        }
+    }
+
+    public function setAbatementPeriod(Period $period): void
+    {
+        $this->values['abatementDateTime'] = $period;
+    }
+
+    public function setAbatementRange(Range $range): void
+    {
+        $this->values['abatementRange'] = $range;
+    }
+
+    public function setAbatementString(string $string): void
+    {
+        $this->values['abatementString'] = $string;
     }
 
     /**
