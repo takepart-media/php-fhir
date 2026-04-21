@@ -1,6 +1,6 @@
 <?php
 
-namespace Takepartdev\LaravelFhir\Connections\Services;
+namespace Takepartdev\LaravelFhir\Connections\Services\Hapi;
 
 use Takepartdev\LaravelFhir\Connections\Hapi;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;

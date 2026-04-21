@@ -1,6 +1,6 @@
 <?php
 
-namespace Takepartdev\LaravelFhir\Connections\Services;
+namespace Takepartdev\LaravelFhir\Connections\Services\Hapi;
 
 use Takepartdev\LaravelFhir\AbstractResource;
 use Takepartdev\LaravelFhir\Connections\Hapi;
