@@ -14,7 +14,7 @@ class ValueSetService extends Snomed
     {
         return $this->get('/ValueSet/$expand', [
             'url' => 'http://snomed.info/sct?fhir_vs',
-            'filter' => urlencode($needle),
+            'filter' => $needle,
         ], $count);
     }
 }
