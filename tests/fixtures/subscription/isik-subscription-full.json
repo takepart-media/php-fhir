@@ -1,0 +1,76 @@
+{
+    "resourceType": "Subscription",
+    "id": "isik-subscription-full",
+    "meta": {
+        "versionId": "3",
+        "lastUpdated": "2026-09-11T09:15:00.000+02:00",
+        "profile": [
+            "https://gematik.de/fhir/isik/StructureDefinition/ISiKSubscription"
+        ]
+    },
+    "language": "de-DE",
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Subscription auf Encounter-Ereignisse</div>"
+    },
+    "status": "active",
+    "contact": [
+        {
+            "system": "email",
+            "value": "betrieb@example.org",
+            "use": "work",
+            "rank": 1
+        },
+        {
+            "system": "phone",
+            "value": "+49 30 1234567",
+            "use": "work"
+        }
+    ],
+    "end": "2026-12-31T23:59:59Z",
+    "reason": "Uebernahme von Fallinformationen in das Studienregister",
+    "criteria": "https://gematik.de/fhir/isik/SubscriptionTopic/isik-encounter-topic",
+    "_criteria": {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria",
+                "valueString": "Encounter?status=in-progress"
+            },
+            {
+                "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria",
+                "valueString": "Encounter?class=IMP"
+            }
+        ]
+    },
+    "channel": {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-heartbeat-period",
+                "valueUnsignedInt": 86400
+            },
+            {
+                "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-timeout",
+                "valueUnsignedInt": 60
+            },
+            {
+                "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-max-count",
+                "valuePositiveInt": 20
+            }
+        ],
+        "type": "rest-hook",
+        "endpoint": "https://register.example.org/api/fhir/notification",
+        "payload": "application/fhir+json",
+        "_payload": {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content",
+                    "valueCode": "full-resource"
+                }
+            ]
+        },
+        "header": [
+            "Authorization: Bearer secret-token",
+            "X-Tenant: example"
+        ]
+    }
+}

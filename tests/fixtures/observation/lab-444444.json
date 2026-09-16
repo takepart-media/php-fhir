@@ -1,0 +1,76 @@
+{
+    "resourceType": "Observation",
+    "meta": {
+        "profile": [
+            "https://www.medizininformatik-initiative.de/fhir/core/modul-labor/StructureDefinition/ObservationLab"
+        ]
+    },
+    "identifier": [
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "OBI"
+                    }
+                ]
+            },
+            "system": "https://uk-koeln.de/fhir/sid/test-lab-results",
+            "value": "720240321180973",
+            "assigner": {
+                "reference": "Organization?identifier=UKK-KlinikII-fuer-Innere-Medizin",
+                "display": "LABOR"
+            }
+        }
+    ],
+    "status": "final",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "26436-6",
+                    "display": "Laboratory studies (set)"
+                },
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "laboratory",
+                    "display": "Laboratory"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "2823-3",
+                "display": "Kalium (HP)"
+            },
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-ObservationValues",
+                "code": "50460"
+            }
+        ]
+    },
+    "subject": {
+        "reference": "Patient?identifier=FOrMe-02-000102"
+    },
+    "effectiveDateTime": "1969-02-12T05:07:33+01:00",
+    "valueQuantity": {
+        "value": 713035,
+        "unit": "mmol/l",
+        "system": "http://unitsofmeasure.org",
+        "code": "mmol/l"
+    },
+    "note": [
+        {
+            "text": "+"
+        }
+    ],
+    "referenceRange": [
+        {
+            "text": "<1234"
+        }
+    ]
+}

@@ -21,6 +21,7 @@ use Takepartdev\LaravelFhir\Resources\QuestionnaireResponseResource;
 use Takepartdev\LaravelFhir\Resources\ResearchStudyResource;
 use Takepartdev\LaravelFhir\Resources\ResearchSubjectResource;
 use Takepartdev\LaravelFhir\Resources\ServiceRequestResource;
+use Takepartdev\LaravelFhir\Resources\SubscriptionResource;
 
 class FhirObject
 {
@@ -42,6 +43,7 @@ class FhirObject
         'Medication' => MedicationResource::class,
         'MedicationStatement' => MedicationStatementResource::class,
         'List' => ListResource::class,
+        'Subscription' => SubscriptionResource::class,
     ];
 
     /**

@@ -1,0 +1,20 @@
+definitions:
+  caches:
+    composer: /root/.composer/cache
+
+pipelines:
+  default:
+    - step: &phpunit
+        name: PHPUnit (PHP 8.4)
+        image: php:8.4-cli
+        caches:
+          - composer
+        script:
+          - apt-get update && apt-get install -y --no-install-recommends git unzip
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer install --prefer-dist --no-interaction --no-progress
+          - vendor/bin/phpunit
+
+  pull-requests:
+    '**':
+      - step: *phpunit

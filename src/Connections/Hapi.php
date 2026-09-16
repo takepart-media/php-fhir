@@ -20,6 +20,7 @@ use Takepartdev\LaravelFhir\Connections\Services\Hapi\QuestionnaireService;
 use Takepartdev\LaravelFhir\Connections\Services\Hapi\ResearchStudyService;
 use Takepartdev\LaravelFhir\Connections\Services\Hapi\ResearchSubjectService;
 use Takepartdev\LaravelFhir\Connections\Services\Hapi\ServerActionService;
+use Takepartdev\LaravelFhir\Connections\Services\Hapi\SubscriptionService;
 use Takepartdev\LaravelFhir\Exceptions\HapiConnectionException;
 use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
 
@@ -41,6 +42,7 @@ use Takepartdev\LaravelFhir\Exceptions\HapiValidationException;
  * @property MedicationService $medications
  * @property MedicationStatementService $medicationStatements
  * @property ListService $lists
+ * @property SubscriptionService $subscriptions
  */
 class Hapi
 {
@@ -124,13 +126,15 @@ class Hapi
     /**
      * @throws HapiConnectionException
      */
-    protected function get(string $url, ?string $orderByField = null, ?string $orderByDirection = null, array $options = [])
+    protected function get(string $url, ?string $orderByField = null, ?string $orderByDirection = null, array $options = [], array $headers = [])
     {
         $ordering = $this->getOrderQuery($orderByField, $orderByDirection);
         $options = $this->getOptionsQuery($options);
 
+        $connection = $headers === [] ? $this->hapiConnection : (clone $this->hapiConnection)->withHeaders($headers);
+
         try {
-            $response = $this->hapiConnection->get("$url?$ordering$options");
+            $response = $connection->get("$url?$ordering$options");
             if ($response->status() !== 200) {
                 throw new HapiConnectionException("Something went wrong while accessing hapi with url: (GET) $url. Message: {$response->body()}");
             }

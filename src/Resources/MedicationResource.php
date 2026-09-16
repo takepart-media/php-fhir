@@ -4,10 +4,12 @@ namespace Takepartdev\LaravelFhir\Resources;
 
 use Takepartdev\LaravelFhir\AbstractResource;
 use Takepartdev\LaravelFhir\DataTypes\CodeableConcept;
+use Takepartdev\LaravelFhir\DataTypes\Extension;
 use Takepartdev\LaravelFhir\DataTypes\Identifier;
 use Takepartdev\LaravelFhir\DataTypes\Medication\MedicationBatch;
 use Takepartdev\LaravelFhir\DataTypes\Medication\MedicationIngredient;
 use Takepartdev\LaravelFhir\DataTypes\Meta;
+use Takepartdev\LaravelFhir\DataTypes\Narrative;
 use Takepartdev\LaravelFhir\DataTypes\Ratio;
 use Takepartdev\LaravelFhir\DataTypes\Reference;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
@@ -37,6 +39,45 @@ class MedicationResource extends AbstractResource
     public function setMeta(Meta $meta): void
     {
         $this->values['meta'] = $meta;
+    }
+
+    public function setImplicitRules(string $implicitRules): void
+    {
+        $this->values['implicitRules'] = $implicitRules;
+    }
+
+    /**
+     * @throws GenericFhirValidationException
+     */
+    public function setLanguage(string $language): void
+    {
+        if ($this->validateLanguage($language, "$this->name.language")) {
+            $this->values['language'] = $language;
+        } else {
+            $this->values['hiddenProperties']['language'] = $language;
+        }
+    }
+
+    public function setText(Narrative $text): void
+    {
+        $this->values['text'] = $text;
+    }
+
+    public function setContained(array $contained): void
+    {
+        $this->initArrayProperty('contained');
+        $this->values['contained'][] = $contained;
+    }
+
+    public function setExtension(Extension $extension): void
+    {
+        $this->values['extension'] = $extension;
+    }
+
+    public function setModifierExtension(Extension $modifierExtension): void
+    {
+        $this->initArrayProperty('modifierExtension');
+        $this->values['modifierExtension'][] = $modifierExtension;
     }
 
     public function setIdentifier(Identifier $identifier): void

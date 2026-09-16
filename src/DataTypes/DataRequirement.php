@@ -65,7 +65,7 @@ class DataRequirement extends AbstractResource
         $this->values['codeFilter'][] = $filter;
     }
 
-    public function setDataFilter(DateFilter $filter): void
+    public function setDateFilter(DateFilter $filter): void
     {
         $this->initArrayProperty('dateFilter');
         $this->values['dateFilter'][] = $filter;

@@ -140,7 +140,8 @@ class OrganizationResource extends AbstractResource
 
     public function setEndpoint(Reference $endpoint): void
     {
-        $this->values['endpoint'] = $endpoint;
+        $this->initArrayProperty('endpoint');
+        $this->values['endpoint'][] = $endpoint;
     }
 
     public function setQualification(Qualification $qualification): void

@@ -37,8 +37,7 @@ class ExtendedContactDetail extends AbstractResource
 
     public function setAddress(Address $address): void
     {
-        $this->initArrayProperty('address');
-        $this->values['address'][] = $address;
+        $this->values['address'] = $address;
     }
 
     public function setOrganization(Reference $organization): void

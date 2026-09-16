@@ -231,8 +231,8 @@ class PatientResource extends AbstractResource
 
     public function setGeneralPractitioner(Reference $practitioner): void
     {
-        $this->initArrayProperty('practitioner');
-        $this->values['practitioner'][] = $practitioner;
+        $this->initArrayProperty('generalPractitioner');
+        $this->values['generalPractitioner'][] = $practitioner;
     }
 
     public function setManagingOrganization(Reference $organization): void

@@ -164,10 +164,10 @@ class QuestionnaireItem extends InternalResource
      */
     public function setDisabledDisplay(string $code): void
     {
-        if ($this->validateInArray($code, self::ITEM_DISABLED_DISPLAYS, "$this->name.disableBehavior")) {
-            $this->values['disableBehavior'] = $code;
+        if ($this->validateInArray($code, self::ITEM_DISABLED_DISPLAYS, "$this->name.disabledDisplay")) {
+            $this->values['disabledDisplay'] = $code;
         } else {
-            $this->values['hiddenProperties']['disableBehavior'] = $code;
+            $this->values['hiddenProperties']['disabledDisplay'] = $code;
         }
     }
 
@@ -242,7 +242,7 @@ class QuestionnaireItem extends InternalResource
         $this->values['answerOption'][] = $answerOption;
     }
 
-    public function setAnswerInitial(ItemInitial $initial): void
+    public function setInitial(ItemInitial $initial): void
     {
         $this->initArrayProperty('initial');
         $this->values['initial'][] = $initial;

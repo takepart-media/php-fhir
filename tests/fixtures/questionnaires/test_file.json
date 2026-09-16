@@ -1,0 +1,145 @@
+{
+    "resourceType": "QuestionnaireResponse",
+    "id": "7172",
+    "meta": {
+        "versionId": "1",
+        "lastUpdated": "2024-09-04T13:39:32.100+00:00",
+        "source": "#PkaBkKcpptnImIQS"
+    },
+    "language": "en",
+    "questionnaire": "http://128.140.65.7/fhir/Questionnaire?identifier=9c8f5cf6-1fe2-4172-90a7-89749b30becc",
+    "status": "completed",
+    "subject": {
+        "reference": "Patient/7151"
+    },
+    "authored": "2024-09-04",
+    "item": [ {
+        "linkId": "9c8f61be-c16d-4284-8979-7dc18c551142",
+        "item": [ {
+            "linkId": "9c8f6212-dab4-4ab1-be14-dbb9e8dbd607",
+            "text": "Date of informed consent",
+            "answer": [ {
+                "valueDate": "1901-05-10"
+            } ]
+        }, {
+            "linkId": "9c8f6251-2bde-4790-8142-8e21c5f8dd42",
+            "text": "Date of birth",
+            "answer": [ {
+                "valueString": "1989-10"
+            } ]
+        }, {
+            "linkId": "9c8f631e-e71c-45b3-af22-514d8708c79d",
+            "text": "Size of hometown",
+            "answer": [ {
+                "valueString": "town (5.000 – 20.000 inhabitants)"
+            } ]
+        }, {
+            "linkId": "9c8f6379-ce30-4201-a55c-eb953e6f842b",
+            "text": "Postal code",
+            "answer": [ {
+                "valueString": "NwV"
+            } ]
+        } ]
+    }, {
+        "linkId": "9c8f6899-2c8c-4269-aa28-82a701f84dc5",
+        "item": [ {
+            "linkId": "9c8f67c7-194c-4478-b326-04fe95e39322",
+            "text": "Participant’s primary language(s)",
+            "answer": [ {
+                "valueString": "DE"
+            }, {
+                "valueString": "EN"
+            }, {
+                "valueString": "ES"
+            }, {
+                "valueString": "RU"
+            }, {
+                "valueString": "TU"
+            }, {
+                "valueString": "custom"
+            } ]
+        }, {
+            "linkId": "9c8f685f-f77a-48b0-9c62-f759fa6738a3",
+            "text": "Proficiency in German",
+            "answer": [ {
+                "valueString": "Excellent"
+            } ]
+        } ]
+    }, {
+        "linkId": "9c8f68bc-03c6-4213-92f4-cc170f6613da",
+        "item": [ {
+            "linkId": "9c8f68df-4266-4cfa-a4eb-350e8280c158",
+            "text": "Does the participant have a history of immigration?",
+            "answer": [ {
+                "valueString": "wish not to disclose"
+            } ]
+        } ]
+    }, {
+        "linkId": "9c8f8781-5294-4663-a1be-22071da1ec4f",
+        "item": [ {
+            "linkId": "9c8f87b1-97df-4871-b99f-ad08dfdbf5f7",
+            "text": "Has genetic testing been done?",
+            "answer": [ {
+                "valueBoolean": true
+            } ]
+        }, {
+            "linkId": "9c8f87bc-c6f4-4033-bc79-d13dda9369a3",
+            "text": "Date of genetic testing",
+            "answer": [ {
+                "valueDate": "1930-12-21"
+            } ]
+        }, {
+            "linkId": "9c8f87ca-55b8-45fd-a761-576e6e7382f9",
+            "text": "Reason for genetic testing",
+            "answer": [ {
+                "valueString": "Suspected syndromic disorder"
+            }, {
+                "valueString": "Steroid dependent nephrotic syndrome (SDNS)"
+            }, {
+                "valueString": "Steroid resistant nephrotic syndrome (SRNS)"
+            }, {
+                "valueString": "Frequent relapsing nephrotic syndrome (FRNS)"
+            } ]
+        }, {
+            "linkId": "9c8f87d8-a302-4287-ad08-66045a419589",
+            "text": "Reason for deciding against genetic testing",
+            "answer": [ {
+                "valueString": "Declined by participant"
+            } ]
+        }, {
+            "linkId": "9c8f87f0-95d8-4a7a-a795-143f22b7c4c5",
+            "text": "Has a molecular genetic diagnosis been established (considered genetically “solved”)?",
+            "answer": [ {
+                "valueString": "No"
+            } ]
+        } ]
+    }, {
+        "linkId": "9cc74f92-bb30-43fa-87dd-476be2a8888d",
+        "text": "<p>Testfieldset_Zahlenfelder_introText</p>",
+        "item": [ {
+            "linkId": "9cc741fb-7234-469b-84a8-08834054c533",
+            "text": "Testfeld_Integer",
+            "answer": [ {
+                "valueInteger": 473
+            } ]
+        }, {
+            "linkId": "9cc74a1a-a8e2-45ae-96f1-6f0dee3f44b7",
+            "text": "Testfield_Decimal",
+            "answer": [ {
+                "valueDecimal": 525
+            } ]
+        }, {
+            "linkId": "9cc74d99-5cad-4f92-bab7-6ae4cef89899",
+            "text": "Patient_name",
+            "answer": [ {
+                "valueString": "nTJL7QJvzl"
+            } ]
+        }, {
+            "linkId": "9cd1d12a-e763-497e-951f-beeb5f26aa5f",
+            "text": "togglefield",
+            "answer": [ {
+                "valueBoolean": true
+            } ]
+        } ]
+    } ]
+}

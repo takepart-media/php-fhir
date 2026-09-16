@@ -1,0 +1,20 @@
+{
+    "resourceType": "Subscription",
+    "id": "isik-subscription-minimal",
+    "status": "requested",
+    "reason": "Benachrichtigung ueber Aenderungen an Patientendaten",
+    "criteria": "https://gematik.de/fhir/isik/SubscriptionTopic/isik-patient-merge",
+    "channel": {
+        "type": "rest-hook",
+        "endpoint": "https://example.org/fhir/subscription-webhook",
+        "payload": "application/fhir+json",
+        "_payload": {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content",
+                    "valueCode": "id-only"
+                }
+            ]
+        }
+    }
+}

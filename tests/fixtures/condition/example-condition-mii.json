@@ -1,0 +1,149 @@
+{
+  "resourceType": "Condition",
+  "id": "example-condition-mii-1",
+  "meta": {
+    "profile": [
+      "https://www.medizininformatik-initiative.de/fhir/core/modul-diagnose/StructureDefinition/Diagnose"
+    ]
+  },
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis"
+        }
+      ]
+    }
+  ],
+  "severity": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "24484000",
+        "display": "Severe"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://fhir.de/CodeSystem/dimdi/icd-10-gm",
+        "version": "2021",
+        "code": "E11.9",
+        "display": "Diabetes mellitus, Typ 2, ohne Komplikationen",
+        "extension": [
+          {
+            "url": "http://fhir.de/StructureDefinition/icd-10-gm-diagnosesicherheit",
+            "valueCoding": {
+              "system": "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_ICD_DIAGNOSESICHERHEIT",
+              "code": "G",
+              "display": "gesicherte Diagnose"
+            }
+          },
+          {
+            "url": "http://fhir.de/StructureDefinition/seitenlokalisation",
+            "valueCoding": {
+              "system": "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_ICD_SEITENLOKALISATION",
+              "code": "B",
+              "display": "beidseitig"
+            }
+          }
+        ]
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44054006",
+        "display": "Diabetes mellitus type 2"
+      }
+    ],
+    "text": "Diabetes mellitus Typ 2"
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "181277001",
+          "display": "Entire pancreas"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/example-patient-1"
+  },
+  "encounter": {
+    "reference": "Encounter/example-encounter-1"
+  },
+  "onsetPeriod": {
+    "start": "2020-03-15",
+    "end": "2021-06-30"
+  },
+  "abatementDateTime": "2021-06-30",
+  "recordedDate": "2020-03-15",
+  "recorder": {
+    "reference": "Practitioner/example-practitioner-1"
+  },
+  "asserter": {
+    "reference": "Practitioner/example-practitioner-1"
+  },
+  "stage": [
+    {
+      "summary": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "786005",
+            "display": "Clinical stage I"
+          }
+        ]
+      },
+      "type": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "260998006",
+            "display": "Clinical staging"
+          }
+        ]
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "169640009",
+              "display": "HbA1c measurement"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Patient diagnosed with Type 2 Diabetes during routine screening."
+    }
+  ]
+}

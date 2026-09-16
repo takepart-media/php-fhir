@@ -108,7 +108,7 @@ class ConditionResource extends AbstractResource
 
     public function setAbatementPeriod(Period $period): void
     {
-        $this->values['abatementDateTime'] = $period;
+        $this->values['abatementPeriod'] = $period;
     }
 
     public function setAbatementRange(Range $range): void

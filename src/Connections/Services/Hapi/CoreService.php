@@ -32,6 +32,7 @@ class CoreService
         'questionnaireResponses' => QuestionnaireResponseService::class,
         'researchStudies' => ResearchStudyService::class,
         'researchSubjects' => ResearchSubjectService::class,
+        'subscriptions' => SubscriptionService::class,
         'medications' => MedicationService::class,
         'medicationStatements' => MedicationStatementService::class,
         'lists' => ListService::class,
