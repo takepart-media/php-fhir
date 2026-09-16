@@ -1,5 +1,5 @@
 {
-    "name": "takepartdev/laravel-fhir",
+    "name": "takepartdev/php-fhir",
     "description": "Laravel-FHIR package",
     "type": "library",
     "authors": [

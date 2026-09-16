@@ -15,6 +15,6 @@ class FhirProvider extends ServiceProvider
     {
         $this->publishes([
             dirname(__DIR__) . '/config/fhir.php' => config_path('fhir.php'),
-        ], 'takepart-laravel-fhir-config');
+        ], 'takepart-php-fhir-config');
     }
 }
