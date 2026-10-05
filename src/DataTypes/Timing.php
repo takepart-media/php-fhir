@@ -17,7 +17,8 @@ class Timing extends AbstractResource
 
     public function setExtension(Extension $extension): void
     {
-        $this->values['extension'] = $extension;
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $extension;
     }
 
     /**

@@ -125,6 +125,43 @@ $name->setGiven('James');
 $patient->setName($name);
 ```
 
+#### Extensions
+
+Every resource and data type that supports extensions exposes `setExtension(Extension $extension)` and, where
+FHIR allows modifier extensions, `setModifierExtension(Extension $extension)`. Both **append**: call the setter
+once per extension and `extension` serializes as a JSON array, which is what FHIR requires (`0..*`).
+
+Example: mark a `Questionnaire.item.answerOption` as exclusive with the standard
+[`questionnaire-optionExclusive`](https://hl7.org/fhir/extensions/StructureDefinition-questionnaire-optionExclusive.html)
+extension:
+```php
+$exclusive = new Extension();
+$exclusive->setUrl('http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive');
+$exclusive->setValueBoolean(true);
+
+$option = new ItemAnswerOption();
+$option->setValueString('none');
+$option->setExtension($exclusive);
+
+$item->setAnswerOption($option);
+```
+
+Produces:
+```json
+{
+  "valueString": "none",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive",
+      "valueBoolean": true
+    }
+  ]
+}
+```
+
+Extensions on primitive fields (`_birthDate`, `_family`, ...) go through `PrependedPrimitive`, which has the same
+`setExtension()` method.
+
 ### HAPI
 
 The package also has a *HAPI* server connection built in. Every resource listed above **except *ServiceRequest*** can be queried&sent to&from the configured HAPI server, each through its own accessor on the connection:
@@ -187,5 +224,8 @@ vendor/bin/phpunit
 The suite hydrates the FHIR JSON fixtures under `tests/fixtures/<resource-type>/` through `FhirObject` and asserts each one serializes back to an identical structure. Tests extend `Takepartdev\LaravelFhir\Tests\TestCase`, which boots a container via `orchestra/testbench` and registers `FhirProvider`.
 
 To cover a new example, drop its JSON into `tests/fixtures/<resource-type>/` — the matching pseudo-test picks up every file in that directory.
+
+`tests/Unit/ExtensionListTest.php` scans `src/` for every class with `setExtension()` or `setModifierExtension()`
+and asserts the setter appends, so new classes get this check for free.
 
 Contact [this](mailto:jploens@takepart-media.de) or [that](mailto:kalman.kulcsar@lynxsolutions.eu) guy should you have any questions.

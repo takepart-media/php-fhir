@@ -99,7 +99,8 @@ class ObservationResource extends AbstractResource
 
     public function setExtension(Extension $extension): void
     {
-        $this->values['extension'] = $extension;
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $extension;
     }
 
     public function setModifierExtension(Extension $modifierExtension): void

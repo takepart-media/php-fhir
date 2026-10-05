@@ -16,7 +16,8 @@ class Expression extends AbstractResource
 
     public function setExtension(Extension $ext): void
     {
-        $this->values['extension'] = $ext;
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $ext;
     }
 
     public function setDescription(string $description): void

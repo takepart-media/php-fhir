@@ -1,0 +1,16 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "answer-option-value-reference",
+    "status": "active",
+    "item": [ {
+        "linkId": "preferred-practitioner",
+        "text": "Preferred practitioner",
+        "type": "reference",
+        "answerOption": [ {
+            "valueReference": {
+                "reference": "Practitioner/example",
+                "display": "Dr. Example"
+            }
+        } ]
+    } ]
+}

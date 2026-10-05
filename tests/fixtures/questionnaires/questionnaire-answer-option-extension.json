@@ -1,0 +1,33 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "answer-option-extension",
+    "status": "active",
+    "item": [ {
+        "linkId": "symptoms",
+        "text": "Which symptoms do you have?",
+        "type": "coding",
+        "repeats": true,
+        "answerOption": [ {
+            "valueString": "headache"
+        }, {
+            "valueString": "nausea",
+            "extension": [ {
+                "url": "http://hl7.org/fhir/StructureDefinition/itemWeight",
+                "valueDecimal": 2.5
+            } ]
+        }, {
+            "valueString": "none",
+            "extension": [ {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive",
+                "valueBoolean": true
+            }, {
+                "url": "http://hl7.org/fhir/StructureDefinition/itemWeight",
+                "valueDecimal": 0.5
+            } ],
+            "modifierExtension": [ {
+                "url": "http://example.org/fhir/StructureDefinition/option-retired",
+                "valueBoolean": false
+            } ]
+        } ]
+    } ]
+}

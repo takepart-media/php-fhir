@@ -3,6 +3,7 @@
 namespace Takepartdev\LaravelFhir\DataTypes\Questionnaire;
 
 use Takepartdev\LaravelFhir\DataTypes\Coding;
+use Takepartdev\LaravelFhir\DataTypes\Extension;
 use Takepartdev\LaravelFhir\DataTypes\Reference;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 use Takepartdev\LaravelFhir\InternalResource;
@@ -14,6 +15,18 @@ class ItemAnswerOption extends InternalResource
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function setExtension(Extension $extension): void
+    {
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $extension;
+    }
+
+    public function setModifierExtension(Extension $modifierExtension): void
+    {
+        $this->initArrayProperty('modifierExtension');
+        $this->values['modifierExtension'][] = $modifierExtension;
     }
 
     /**
@@ -72,7 +85,7 @@ class ItemAnswerOption extends InternalResource
     public function setValueReference(Reference $reference): void
     {
         if ($this->validateOneOfThese('value', "$this->name.valueReference")) {
-            $this->values['reference'] = $reference;
+            $this->values['valueReference'] = $reference;
         } else {
             $this->values['hiddenProperties']['valueReference'] = $reference;
         }
