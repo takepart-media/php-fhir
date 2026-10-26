@@ -140,7 +140,8 @@ class QuestionnaireResource extends AbstractResource
     public function setDerivedFrom(string $canonical): void
     {
         if ($this->validateUri($canonical, 'Questionnaire.derivedFrom')) {
-            $this->values['derivedFrom'] = $canonical;
+            $this->initArrayProperty('derivedFrom');
+            $this->values['derivedFrom'][] = $canonical;
         } else {
             $this->values['hiddenProperties']['derivedFrom'] = $canonical;
         }
