@@ -14,6 +14,12 @@ class Extension extends AbstractResource
         parent::__construct();
     }
 
+    public function setExtension(Extension $extension): void
+    {
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $extension;
+    }
+
     /**
      * @throws GenericFhirValidationException
      */

@@ -1,0 +1,62 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "text-translation",
+    "language": "en",
+    "status": "active",
+    "title": "Baseline",
+    "_title": {
+        "extension": [ {
+            "url": "http://hl7.org/fhir/StructureDefinition/translation",
+            "extension": [ {
+                "url": "lang",
+                "valueCode": "de"
+            }, {
+                "url": "content",
+                "valueString": "Erstuntersuchung"
+            } ]
+        } ]
+    },
+    "item": [ {
+        "linkId": "general",
+        "text": "General",
+        "_text": {
+            "extension": [ {
+                "url": "http://hl7.org/fhir/StructureDefinition/translation",
+                "extension": [ {
+                    "url": "lang",
+                    "valueCode": "de"
+                }, {
+                    "url": "content",
+                    "valueString": "Allgemein"
+                } ]
+            }, {
+                "url": "http://hl7.org/fhir/StructureDefinition/translation",
+                "extension": [ {
+                    "url": "lang",
+                    "valueCode": "tr"
+                }, {
+                    "url": "content",
+                    "valueString": "Genel"
+                } ]
+            } ]
+        },
+        "type": "group",
+        "item": [ {
+            "linkId": "comment",
+            "text": "Comment",
+            "_text": {
+                "extension": [ {
+                    "url": "http://hl7.org/fhir/StructureDefinition/translation",
+                    "extension": [ {
+                        "url": "lang",
+                        "valueCode": "de"
+                    }, {
+                        "url": "content",
+                        "valueString": "Kommentar"
+                    } ]
+                } ]
+            },
+            "type": "string"
+        } ]
+    } ]
+}
