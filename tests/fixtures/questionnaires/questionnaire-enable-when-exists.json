@@ -1,0 +1,24 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "enable-when-exists",
+    "status": "active",
+    "item": [
+        {
+            "linkId": "q1",
+            "type": "string",
+            "text": "Mood"
+        },
+        {
+            "linkId": "q2",
+            "type": "string",
+            "text": "Why no mood?",
+            "enableWhen": [
+                {
+                    "question": "q1",
+                    "operator": "exists",
+                    "answerBoolean": false
+                }
+            ]
+        }
+    ]
+}

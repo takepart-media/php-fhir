@@ -24,6 +24,8 @@ class ItemEnableWhen extends InternalResource
 
     public const string OPERATOR_LTE = '<=';
 
+    public const string OPERATOR_EXISTS = 'exists';
+
     public const array ENABLE_WHEN_OPERATORS = [
         self::OPERATOR_EQ,
         self::OPERATOR_NE,
@@ -31,6 +33,7 @@ class ItemEnableWhen extends InternalResource
         self::OPERATOR_LT,
         self::OPERATOR_GTE,
         self::OPERATOR_LTE,
+        self::OPERATOR_EXISTS,
     ];
 
     public function __construct()
