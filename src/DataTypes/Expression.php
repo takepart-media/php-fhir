@@ -25,6 +25,11 @@ class Expression extends AbstractResource
         $this->values['description'] = $description;
     }
 
+    public function setName(string $name): void
+    {
+        $this->values['name'] = $name;
+    }
+
     /**
      * @throws GenericFhirValidationException
      */
