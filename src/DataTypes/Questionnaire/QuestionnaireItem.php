@@ -3,6 +3,7 @@
 namespace Takepartdev\LaravelFhir\DataTypes\Questionnaire;
 
 use Takepartdev\LaravelFhir\DataTypes\Coding;
+use Takepartdev\LaravelFhir\DataTypes\Extension;
 use Takepartdev\LaravelFhir\Exceptions\GenericFhirValidationException;
 use Takepartdev\LaravelFhir\InternalResource;
 
@@ -94,6 +95,18 @@ class QuestionnaireItem extends InternalResource
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function setExtension(Extension $extension): void
+    {
+        $this->initArrayProperty('extension');
+        $this->values['extension'][] = $extension;
+    }
+
+    public function setModifierExtension(Extension $modifierExtension): void
+    {
+        $this->initArrayProperty('modifierExtension');
+        $this->values['modifierExtension'][] = $modifierExtension;
     }
 
     public function setLinkId(string $linkId): void
