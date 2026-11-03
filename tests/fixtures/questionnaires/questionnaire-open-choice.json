@@ -1,0 +1,20 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "open-choice",
+    "status": "active",
+    "item": [
+        {
+            "linkId": "q1",
+            "type": "open-choice",
+            "text": "Mood",
+            "answerOption": [
+                {
+                    "valueCoding": {
+                        "code": "good",
+                        "display": "Good"
+                    }
+                }
+            ]
+        }
+    ]
+}

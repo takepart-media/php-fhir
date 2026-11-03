@@ -41,7 +41,11 @@ class QuestionnaireItem extends InternalResource
 
     public const string TYPE_QUANTITY = 'quantity';
 
+    // R4 only: R5 removed 'choice' in favour of 'coding' with answerConstraint 'optionsOnly'.
     public const string TYPE_CHOICE = 'choice';
+
+    // R4 only: R5 removed 'open-choice' in favour of 'coding' with answerConstraint 'optionsOrString'.
+    public const string TYPE_OPEN_CHOICE = 'open-choice';
 
     public const array ITEM_TYPES = [
         self::TYPE_GROUP,
@@ -60,6 +64,7 @@ class QuestionnaireItem extends InternalResource
         self::TYPE_REFERENCE,
         self::TYPE_QUANTITY,
         self::TYPE_CHOICE,
+        self::TYPE_OPEN_CHOICE,
     ];
 
     public const string ENABLE_BEHAVIOR_ALL = 'all';
